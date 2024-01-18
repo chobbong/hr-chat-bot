@@ -13,6 +13,7 @@ from openai import OpenAI
 st.header("근로기준법 챗봇 by ian.cho at hahahaHR.com")
 # Streamlit의 secrets를 사용하여 API 키를 안전하게 불러옵니다.
 api_key = st.text_input("당신의 OpenAI API Key를 입력하세요.우리는 API Key를 저장하지 않으니 안심하세요!")
+st.write("API Key를 입력하시고 엔터를 치시면 아래 에러창이 사라지고 Chat-창이 나타납니다.")
 
 client = OpenAI(api_key=api_key)
 
