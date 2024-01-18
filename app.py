@@ -11,11 +11,10 @@ import plotly.express as px
 from openai import OpenAI
 
 # Streamlit의 secrets를 사용하여 API 키를 안전하게 불러옵니다.
-api_key = st.secrets["OPENAI_API_KEY"]
+# Streamlit의 secrets를 사용하여 API 키를 안전하게 불러옵니다.
+api_key = st.text_input("Enter your API key")
 
-st.write(
-    "Has environment variables been set:",
-    os.environ.get('OPENAI_API_KEY') == api_key)
+client = OpenAI(api_key=api_key)
 
 client = OpenAI(api_key=api_key)
 
