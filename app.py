@@ -10,11 +10,9 @@ from streamlit_chat import message
 import plotly.express as px
 from openai import OpenAI
 
+st.header("근로기준법 챗봇 by ian.cho at hahahaHR.com")
 # Streamlit의 secrets를 사용하여 API 키를 안전하게 불러옵니다.
-# Streamlit의 secrets를 사용하여 API 키를 안전하게 불러옵니다.
-api_key = st.text_input("Enter your API key")
-
-client = OpenAI(api_key=api_key)
+api_key = st.text_input("당신의 OpenAI API Key를 입력하세요.우리는 API Key를 저장하지 않으니 안심하세요!")
 
 client = OpenAI(api_key=api_key)
 
@@ -81,6 +79,7 @@ def generate_response(messages):
      )
      return result.choices[0].message.content
 
+
 # Streamlit UI 설정
 if 'generated' not in st.session_state:
     st.session_state['generated'] = []
@@ -88,7 +87,7 @@ if 'past' not in st.session_state:
     st.session_state['past'] = []
 
 with st.form('form', clear_on_submit=True):
-    user_input = st.text_input('정책을 보세요!', '', key='input')
+    user_input = st.text_input('근로기준법에 대해 물어보세요!', '', key='input')
     submitted = st.form_submit_button('Send')
 
 if submitted and user_input:
