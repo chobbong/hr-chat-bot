@@ -10,11 +10,14 @@ from streamlit_chat import message
 import plotly.express as px
 from openai import OpenAI
 
-st.write(
-	"Has environment variables been set:",
-	os.environ['OPENAI_API_KEY'] == st.secrets['OPENAI_API_KEY'])
+# Streamlit의 secrets를 사용하여 API 키를 안전하게 불러옵니다.
+api_key = st.secrets["OPENAI_API_KEY"]
 
-client = OpenAI(api_key=API_KEY)
+st.write(
+    "Has environment variables been set:",
+    os.environ.get('OPENAI_API_KEY') == api_key)
+
+client = OpenAI(api_key=api_key)
 
 # 임베딩 모델을 사용하여 텍스트의 임베딩을 얻는 함수
 def get_embedding(text, model="text-embedding-ada-002"):
