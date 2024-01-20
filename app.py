@@ -65,11 +65,12 @@ def return_answer_candidate(df, query):
 def create_prompt(df, query):
     result = return_answer_candidate(df, query)
     docs = [f"doc {i+1}: {doc['text']}" for i, doc in result.iterrows()]
-    system_role = (f"""You are an artificial intelligence language model named "정채기" that specializes in summarizing and answering documents about Seoul's youth policy, developed by developers 조윤서. 
+    system_role = (f"""You are an artificial intelligence language model named "법잘알" that specializes in summarizing and answering documents about Seoul's youth policy, developed by developers 조윤서. 
     You need to take a given document and return a very detailed summary of the document in the query language.
     Here are the documents:
     {' '.join(docs)}
     You must return in Korean. Return an accurate answer based on the document.
+    You should also talk about the number of clauses that provide the basis for your answer.
     """)
     user_content = f"""User question: "{query}"."""
     messages = [{"role": "system", "content": system_role}, {"role": "user", "content": user_content}]
